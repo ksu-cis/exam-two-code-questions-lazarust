@@ -7,6 +7,38 @@
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
-        <TextBlock>Customize Cobbler</TextBlock>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="15"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock Grid.Row="0">Customize Cobbler</TextBlock>
+        <StackPanel Grid.Column="0" Grid.Row="1">
+            <Button Height="100" Name="Peach" Click="Peach_Click">Peach</Button>
+            <Button Height="100" Name="Cherry" Click="Cherry_Click">Cherry</Button>
+            <Button Height="100" Name="Blueberry" Click="Blueberry_Click">Blueberry</Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Column="1" Grid.Row="1">
+            <TextBlock Text="With Ice Cream:  "/>
+            <CheckBox IsChecked="{Binding Path=WithIceCream}"></CheckBox>
+        </StackPanel>
+        
+        <StackPanel Grid.Column="2" Grid.Row="1">
+            <TextBlock Text="{Binding}" Name="Cobbler" FontWeight="Bold"/>
+            <TextBlock Text="{Binding Path=Price, StringFormat=c}" />
+            <ListBox ItemsSource="{Binding Path=SpecialInstructions}">
+                <ListBox.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding}"/>
+                </DataTemplate>
+                </ListBox.ItemTemplate>
+            </ListBox>
+        </StackPanel>
+        
     </Grid>
 </UserControl>
